@@ -1,0 +1,12 @@
+
+
+<li>@Model.GetColor()</li>
+<li>@Model.GetMiles()</li>
+<li>@Model.GetPrice()</li>
+<li>@Model.GetId()</li>
+
+<a href="/">Home</a>
+<p><a href="/add_car">Add another task</a></p>
+<form action="/cars/@Model.GetId()" method="post">
+<button type="submit">DELETE</button>
+</form>

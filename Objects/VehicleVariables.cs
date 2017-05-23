@@ -5,15 +5,22 @@ namespace VehicleVariables.Objects
 {
   public class Vehicle
   {
-    private static List<Car> _cars = new List<Car> {};
-    public static List<Car> GetAll()
-    {
-      return _cars;
-    }
-    public static void Store(Car newCar)
-    {
-      _cars.Add(newCar);
-    }
+    private static Dictionary<string, object> carValues = new Dictionary<string, object>();
 
+    public static Dictionary<string, object> GetDictionary()
+    {
+      return carValues;
+    }
+    public static void SaveToDict(Car newCar)
+    {
+      if(newCar.GetPrice()>50000)
+      {
+        carValues.Add("Premier", newCar);
+      }
+      else
+      {
+        carValues.Add("Normal", newCar);
+      }
+    }
   }
 }

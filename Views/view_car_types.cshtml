@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Car Dealership</h1>
+      <ul>
+        @foreach(var thing in @Model)
+          {
+            @if (@thing.Key == "Premier")
+            {
+              <li><strong>@thing.Value.GetMakeModel()</strong></li>
+            }
+            else
+            {
+              <li>@thing.Value.GetMakeModel()</li>
+            }
+          }
+      </ul>
+      <p><a href="/add_car">Add another task</a></p>
+  </body>
+</html>

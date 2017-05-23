@@ -7,14 +7,32 @@
   <body>
     <h1>Car Dealership</h1>
       <ul>
-        @foreach(var vehicle in @Model)
+        @foreach(var item in @Model)
           {
-            <li>@vehicle.GetMakeModel()</li>
-            <li>@vehicle.GetColor()</li>
-            <li>@vehicle.GetMiles()</li>
-            <li>@vehicle.GetPrice()</li>
+            @if(@item.IsPremier())
+            {
+              <li><a href = '/cars/@item.GetId()'> <strong>@item.GetMakeModel() Premier Car!</strong></a></li>
+              /*<li>@item.GetColor()</li>
+              <li>@item.GetMiles()</li>
+              <li>@item.GetPrice()</li>
+              <li>@item.GetId()</li>*/
+            }
+            else
+            {
+              <li><a href = '/cars/@item.GetId()'>@item.GetMakeModel()</a></li>
+              /*<li>@item.GetColor()</li>
+              <li>@item.GetMiles()</li>
+              <li>@item.GetPrice()</li>
+              <li>@item.GetId()</li>*/
+            }
           }
       </ul>
+      <form action="/car_search">
+        <label for="search-id">Search Cars By ID:</label>
+        <input id="search-id" name="search-id" type="text">
+        <button type="submit">Search</button>
+      </form>
       <p><a href="/add_car">Add another task</a></p>
+      <p><a href="/car_values">Specify premier or normal</a></p>
   </body>
 </html>
